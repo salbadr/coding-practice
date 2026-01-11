@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        // ... other options
+        "lib": [
+            "ES2024",
+            "dom"
+        ], // Or a later version like "es2018" or "esnext"
+        // ... other options
+    },
+    // ... other options
+}
