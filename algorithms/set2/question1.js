@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Question 1: Filter and Transform User Data
 Difficulty: Easy
@@ -18,15 +19,15 @@ Expected Output:
   { id: 3, name: 'Charlie', email: 'charlie@example.com' }
 ]
  */
-(function () {
-    var users = [
+(() => {
+    const users = [
         { id: 1, name: 'Alice', email: 'alice@example.com', active: true, role: 'admin' },
         { id: 2, name: 'Bob', email: 'bob@example.com', active: false, role: 'user' },
         { id: 3, name: 'Charlie', email: 'charlie@example.com', active: true, role: 'user' }
     ];
     function getActiveUsers(userData) {
-        return userData.filter(function (user) { return user.active; }).map(function (user) { return ({ id: user.id, name: user.name, email: user.email }); });
+        return userData.filter((user) => user.active).map((user) => ({ id: user.id, name: user.name, email: user.email }));
     }
-    var result = getActiveUsers(users);
+    const result = getActiveUsers(users);
     console.log(result);
 })();

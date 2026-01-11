@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Find the number of cells equal to "1" that have at least one adjacent "1" (up/down/left/right).
  * grid = [
@@ -9,8 +10,8 @@
 
 Expected output 8
  */
-(function () {
-    var grid = [
+(() => {
+    const grid = [
         ["1", "1", "0", "0"],
         ["1", "0", "0", "1"],
         ["0", "0", "1", "1"],
@@ -18,23 +19,22 @@ Expected output 8
     ];
     function numCells(grid) {
         var _a, _b;
-        var cells = [];
-        for (var row in grid) {
-            for (var col in grid[row]) {
+        const cells = [];
+        for (const row in grid) {
+            for (const col in grid[row]) {
                 cells.push({ row: Number(row), col: Number(col) });
             }
         }
-        var total = 0;
-        for (var _i = 0, cells_1 = cells; _i < cells_1.length; _i++) {
-            var cell = cells_1[_i];
-            var current = grid[cell.row][cell.col];
-            var position = {
+        let total = 0;
+        for (const cell of cells) {
+            const current = grid[cell.row][cell.col];
+            const position = {
                 above: grid[cell.row - 1] ? grid[cell.row - 1][cell.col] : '0',
                 down: grid[cell.row + 1] ? grid[cell.row + 1][cell.col] : '0',
                 left: (_a = grid[cell.row][cell.col - 1]) !== null && _a !== void 0 ? _a : '0',
                 right: (_b = grid[cell.row][cell.col + 1]) !== null && _b !== void 0 ? _b : '0',
             };
-            var numAdjacent = Object.values(position).filter(function (value) { return value === '1'; }).length;
+            const numAdjacent = Object.values(position).filter(value => value === '1').length;
             if (current === '1' && numAdjacent >= 1) {
                 total++;
             }

@@ -1,11 +1,17 @@
 {
     "compilerOptions": {
-        // ... other options
-        "lib": [
-            "ES2024",
-            "dom"
-        ], // Or a later version like "es2018" or "esnext"
-        // ... other options
+        "target": "es2017",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": [
+            "node",
+            "jest"
+        ]
     },
-    // ... other options
+    "include": [
+        "."
+    ]
 }

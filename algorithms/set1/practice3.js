@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Q1:
  Given:
@@ -10,17 +11,16 @@ Convert it into:
 { "1": "Tom", "2": "Ana" }
 
  */
-var data = [
+const data = [
     { id: 1, name: "Tom" },
     { id: 2, name: "Ana" }
 ];
 function transform(data) {
-    var result = {};
-    for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
-        var item = data_1[_i];
+    const result = {};
+    for (const item of data) {
         result[item.id] = item.name;
     }
     return result;
 }
-var answer = transform(data);
+const answer = transform(data);
 console.log(answer);

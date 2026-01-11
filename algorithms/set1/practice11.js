@@ -1,3 +1,4 @@
+"use strict";
 /**
 Given:
 
@@ -9,63 +10,40 @@ Merge by id and keep all ids appearing in either array.
 
 Missing fields should be null.
  */
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-(function () {
-    var local = [{ id: 1, email: "a" }, { id: 2, email: "b" }];
-    var remote = [{ id: 1, lastLogin: 100 }, { id: 3, lastLogin: 200 }];
+(() => {
+    const local = [{ id: 1, email: "a" }, { id: 2, email: "b" }];
+    const remote = [{ id: 1, lastLogin: 100 }, { id: 3, lastLogin: 200 }];
     function merger(local, remote) {
-        var localProps = Object.keys(local[0]);
-        var remoteProps = Object.keys(remote[0]);
+        const localProps = Object.keys(local[0]);
+        const remoteProps = Object.keys(remote[0]);
         fillNull(remote, localProps);
         fillNull(local, remoteProps);
         function fillNull(source, props) {
-            var _loop_3 = function (prop) {
-                source.forEach(function (item) {
+            for (const prop of props) {
+                source.forEach(item => {
                     if (item[prop] === undefined) {
                         item[prop] = null;
                     }
                 });
-            };
-            for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
-                var prop = props_1[_i];
-                _loop_3(prop);
             }
         }
-        var result = [];
-        var _loop_1 = function (localItem) {
-            var foundRemoteItem = remote.find(function (remoteItem) { return remoteItem.id === localItem.id; });
-            var mergedSources = {};
+        const result = [];
+        for (const localItem of local) {
+            const foundRemoteItem = remote.find(remoteItem => remoteItem.id === localItem.id);
+            let mergedSources = {};
             if (foundRemoteItem) {
-                mergedSources = __assign(__assign({}, localItem), foundRemoteItem);
+                mergedSources = Object.assign(Object.assign({}, localItem), foundRemoteItem);
                 result.push(mergedSources);
             }
             else {
                 result.push(localItem);
             }
-        };
-        for (var _i = 0, local_1 = local; _i < local_1.length; _i++) {
-            var localItem = local_1[_i];
-            _loop_1(localItem);
         }
-        var _loop_2 = function (remoteItem) {
-            var foundRemoteItem = result.find(function (item) { return remoteItem.id === item.id; });
+        for (const remoteItem of remote) {
+            const foundRemoteItem = result.find(item => remoteItem.id === item.id);
             if (foundRemoteItem === undefined) {
                 result.push(remoteItem);
             }
-        };
-        for (var _a = 0, remote_1 = remote; _a < remote_1.length; _a++) {
-            var remoteItem = remote_1[_a];
-            _loop_2(remoteItem);
         }
         return result;
     }

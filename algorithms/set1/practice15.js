@@ -1,5 +1,6 @@
-(function () {
-    var teams = [
+"use strict";
+(() => {
+    const teams = [
         {
             email: 'a@abc.com',
             time: 10.6
@@ -35,7 +36,7 @@
      * ]
      */
     function calculateAveragePerTeam() {
-        var teamSum = teams.reduce(function (accumulator, team) {
+        const teamSum = teams.reduce((accumulator, team) => {
             if (!accumulator[team.email]) {
                 accumulator[team.email] = { time: 0, numOfReplies: 1 };
                 return accumulator;
@@ -44,9 +45,9 @@
             accumulator[team.email].numOfReplies = accumulator[team.email].numOfReplies + 1;
             return accumulator;
         }, {});
-        var result = {};
-        for (var group in teamSum) {
-            var _a = teamSum[group], time = _a.time, numOfReplies = _a.numOfReplies;
+        const result = {};
+        for (const group in teamSum) {
+            const { time, numOfReplies, } = teamSum[group];
             result[group] = Number((time / numOfReplies).toFixed(2));
         }
         return result;

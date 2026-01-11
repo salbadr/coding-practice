@@ -1,3 +1,4 @@
+"use strict";
 /**
  Parse this string:
 
@@ -8,12 +9,12 @@ Return:
 
 { A: 10, B: 20, C: 5 }
  */
-(function () {
-    var input = "A:10,B:20,C:5";
+(() => {
+    const input = "A:10,B:20,C:5";
     function parser(data) {
         return data.split(',')
-            .map(function (item) { return item.split(':'); })
-            .reduce(function (acc, item) {
+            .map(item => item.split(':'))
+            .reduce((acc, item) => {
             acc[item[0]] = item[1];
             return acc;
         }, {});

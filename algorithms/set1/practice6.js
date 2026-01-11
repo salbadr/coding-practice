@@ -1,12 +1,13 @@
+"use strict";
 /**
  * Sort objects by score descending:
  *
  * [{name:"A",score:10},{name:"B",score:50}]
  */
-var employees = [{ name: "A", score: 10 }, { name: "B", score: 50 }];
-(function () {
+const employees = [{ name: "A", score: 10 }, { name: "B", score: 50 }];
+(() => {
     function sortDesc(data) {
-        return data.sort(function (a, b) {
+        return data.sort((a, b) => {
             if (a.score > b.score) {
                 return -1;
             }

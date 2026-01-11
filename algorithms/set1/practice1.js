@@ -1,3 +1,4 @@
+"use strict";
 /**
  *
  * Prompt:
@@ -31,23 +32,23 @@ clean TS types
  *
  *
  */
-var input = [
+const input = [
     { "id": 1, "name": "Alice", "group": "A", "score": 91 },
     { "id": 2, "name": "Bob", "group": "B", "score": 85 },
     { "id": 3, "name": "Cara", "group": "A", "score": 77 },
     { "id": 4, "name": "Dan", "group": "B", "score": 93 }
 ];
 function calculateAverage(studentData) {
-    var result = {};
-    studentData.forEach(function (student) {
-        var group = student.group;
+    const result = {};
+    studentData.forEach((student) => {
+        const group = student.group;
         if (!result[group]) {
             result[group] = calculateMetrics(group);
         }
     });
     return result;
     function calculateMetrics(group) {
-        var metrics = studentData.reduce(function (metrics, student) {
+        const metrics = studentData.reduce((metrics, student) => {
             if (student.group === group) {
                 metrics.sum += student.score;
                 metrics.total++;
