@@ -7,7 +7,5 @@ export function chunkyMonkey<T>(values: T[], size: number): T[][] {
 
     }
 
-    console.log(result)
-
     return result
 }
